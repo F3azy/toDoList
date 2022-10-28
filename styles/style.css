@@ -1,0 +1,291 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #4d4d4d;
+  color: #ffffff;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.curve-container {
+  /* position: relative; */
+  width: 100%;
+}
+
+.wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+  z-index: -1;
+}
+
+.wave svg {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 740px;
+}
+
+.wave .shape-fill {
+  fill: #ff4482;
+}
+
+.backboard {
+  /* position: absolute;
+  top: 10%;
+  left: 12.5%; */
+  /* width: 75%; */
+  background-color: #7a7a7a;
+  border: #cfcfcf solid 2px;
+  border-radius: 16px;
+  margin: 50px auto;
+  padding: 12px 0 0 0;
+}
+
+.backboard > h2 {
+  text-align: center;
+}
+
+@media only screen and (min-width: 350px) {
+  /* For mobile: */
+  #myTask {
+    width: 70%;
+    border-radius: 12px;
+  }
+  
+  #myTaskDate {
+    width: 70%;
+    border-radius: 12px;
+  }
+  
+  #addTask {
+    width: 70%;
+    border-radius: 12px;
+  }
+
+  .backboard > #myList > li > span:nth-child(1), .backboard > #myList > li > div:nth-child(1){
+    width: 55%;
+  }
+
+  .backboard > #myList > li > span:nth-child(2){
+    margin: 0;
+  }
+
+  .backboard {
+    width: 95%;
+  }
+}
+
+@media only screen and (min-width: 400px) {
+
+  .backboard > #myList > li > span:nth-child(1), .backboard > #myList > li > div:nth-child(1){
+    width: 60%;
+  }
+
+}
+
+@media only screen and (min-width: 500px) {
+
+  .backboard > #myList > li > span:nth-child(1), .backboard > #myList > li > div:nth-child(1){
+    width: 65%;
+  }
+
+  .backboard {
+    width: 90%;
+  }
+
+}
+
+@media only screen and (min-width: 600px) {
+
+  /* For tablets: */
+  #myTask {
+    width: 70%;
+    border-radius: 12px;
+  }
+  
+  #myTaskDate {
+    width: 35%;
+    border-radius: 12px 0 0 12px;
+  }
+  
+  #addTask {
+    width: 35%;
+    border-radius: 0 12px 12px 0;
+  }
+
+  .backboard > #myList > li > span:nth-child(1), .backboard > #myList > li > div:nth-child(1){
+    width: 70%;
+  }
+
+  .backboard {
+    width: 85%;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+
+  .backboard > #myList > li > span:nth-child(1), .backboard > #myList > li > div:nth-child(1){
+    width: 75%;
+  }
+
+  .backboard {
+    width: 75%;
+  }
+
+}
+
+@media only screen and (min-width: 1000px) {
+
+  .backboard > #myList > li > span:nth-child(1), .backboard > #myList > li > div:nth-child(1){
+    width: 80%;
+  }
+
+}
+
+@media only screen and (min-width: 1600px) {
+
+  /* For desktop: */
+  #myTask {
+    width: 40%;
+    border-radius: 12px 0 0 12px;
+  }
+  
+  #myTaskDate {
+    width: 10%;
+    border-radius: 0;
+  }
+  
+  #addTask {
+    width: 10%;
+  }
+
+  .backboard > #myList > li > span:nth-child(1), .backboard > #myList > li > div:nth-child(1){
+    width: 85%;
+  }
+
+}
+
+.task-input-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#myTask, #myTaskDate, #addTask, #searchTask{
+  background-color: #f1f1f1;
+  padding: 12px;
+  border: #525252 solid 1px;
+  font-size: 16px;
+}
+
+#searchTask {
+  width: 70%;
+  border-radius: 12px;
+  margin: 30px 0 0 0;
+}
+
+#addTask {
+  color: #000000;
+  text-align: center;
+  cursor: pointer;
+}
+
+#addTask:hover {
+  background-color: #c4c4c4;
+}
+
+.backboard > #myList {
+  list-style: none;
+  width: 100%;
+  padding-inline-start: 0;
+  margin: 20px 0 0 0;
+  color: #000000;
+}
+
+.backboard > #myList > li{
+  width: 100%;
+  /* padding: 12px; */
+  cursor: pointer;
+  border-bottom: #cccccc solid 1px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+.backboard > #myList > li > span:nth-child(1), .backboard > #myList > li > div:nth-child(1){
+  border-right: #000000 solid 2px;
+  padding: 12px;
+  text-align: justify;
+}
+.backboard > #myList > li:last-child > span:nth-child(1){
+  border-radius: 0 0 0 12px;
+}
+
+.backboard > #myList > li > div:nth-child(1) > input {
+  width: 100%;
+}
+
+.backboard > #myList > li > span:nth-last-child(2){
+  padding: 12px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.backboard > #myList > li:only-child{
+  border-bottom: none;
+}
+
+.backboard > #myList > li:nth-child(odd){
+  background-color: #ececec;
+}
+
+.backboard > #myList > li:nth-child(even){
+  background-color: #dddddd;
+}
+
+.backboard > #myList > li:last-child{
+  border-radius: 0 0 12px 12px;
+  border-bottom: none;
+}
+
+li.last-visible {
+  border-radius: 0 0 12px 12px;
+  border-bottom: none;
+}
+
+li.last-visible .close{
+  border-radius: 0 0 12px 0;
+}
+
+.backboard > #myList > li:hover{
+  background-color: #cfcfcf;
+}
+
+.close {
+  background-color: #a5a5a5;
+  height: 100%;
+  color: #ffffff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+}
+
+.backboard > #myList > li:last-child .close {
+  border-radius: 0 0 12px 0;
+}
+
+.close:hover {
+  background-color: #929292;
+}
