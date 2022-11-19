@@ -1,3 +1,4 @@
+//Francesco Carvelli
 class ToDoList {
     #tasks
     #tasksDate
@@ -61,28 +62,30 @@ class ToDoList {
     #updateTask(taskText) {
         taskText.style.display = "none";
 
+        const newInputCon = document.createElement("div");
         const newInput = document.createElement("input");
+        newInputCon.append(newInput);
 
         newInput.type = "text";
 
         newInput.value = taskText.innerHTML;
 
-        newInput.addEventListener("blur", () => { this.#inputChange(taskText, newInput) });
+        newInput.addEventListener("blur", () => { this.#inputChange(taskText, newInputCon) });
 
-        taskText.parentElement.prepend(newInput);
+        taskText.parentElement.prepend(newInputCon);
 
         newInput.focus();
     }
 
-    #inputChange(taskText, newInput) {
-        taskText.innerHTML = newInput.value;
+    #inputChange(taskText, newInputCon) {
+        taskText.innerHTML = newInputCon.firstChild.value;
 
-        this.#tasks[newInput.parentElement.value] = taskText.innerHTML;
+        this.#tasks[newInputCon.parentElement.value] = taskText.innerHTML;
 
         this.#updateLS();
 
-        taskText.style.display = "inline";
-        newInput.remove();
+        taskText.style.display = "block";
+        newInputCon.remove();
     }
 
     #updateLS() {
@@ -142,9 +145,25 @@ class ToDoList {
                 myListElem[i].firstChild.innerHTML = newText;
 
                 myListElem[i].style.display = 'flex';
+                myListElem[i].classList.remove("last-visible");
             }
             else
                 myListElem[i].style.display = 'none';
+        }
+
+        this.#checkLastVisible();
+    }
+
+    #checkLastVisible() {
+        let myListElem = this.#list.getElementsByTagName("li");
+
+        for(let i = myListElem.length-1; i >= 0; --i)
+        {
+            if(myListElem[i].style.display == 'flex')
+            {
+                myListElem[i].classList.add("last-visible");
+                break;
+            }
         }
     }
 
@@ -156,6 +175,7 @@ class ToDoList {
             text = text.replace(/(<mark>|<\/mark>)/gim, '');
             myListElem[i].firstChild.innerHTML = text;
             myListElem[i].style.display = 'flex';
+            myListElem[i].classList.remove("last-visible");
         }
     }
 
@@ -222,7 +242,7 @@ addTask.addEventListener("click", () => {
 
     const alerts = toDoList.validation(myTask.value, myTaskDate.value);
 
-    if(alerts !== null) {
+    if(alerts !== "") {
         console.log(alerts);
         alert(alerts);
     }
@@ -234,4 +254,3 @@ addTask.addEventListener("click", () => {
 });
 
 searchTask.addEventListener("input", () => { toDoList.searchTask(searchTask.value) });
-
