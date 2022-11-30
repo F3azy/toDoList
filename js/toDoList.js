@@ -238,16 +238,16 @@ addTask.addEventListener("click", () => {
     const myTask = document.getElementById("myTask");
     const myTaskDate = document.getElementById("myTaskDate");
 
-    myTask.value.trim();
 
-    const alerts = toDoList.validation(myTask.value, myTaskDate.value);
+    let tasktext = myTask.value.trim();
+
+    const alerts = toDoList.validation(tasktext, myTaskDate.value);
 
     if(alerts !== "") {
-        console.log(alerts);
         alert(alerts);
     }
     else {
-        toDoList.createItem(myTask.value, myTaskDate.value);
+        toDoList.createItem(tasktext, myTaskDate.value);
         myTask.value = "";
         myTaskDate.value = "";
     }
